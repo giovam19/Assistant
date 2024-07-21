@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Assistant</string>
+    <string name="nothing_today">Nothing planned for Today!</string>
+    <string name="today">Today</string>
+    <string name="tasks">Tasks</string>
+    <string name="birthdays">Birthdays</string>
+    <string name="notes">Notes</string>
+    <string name="lists">Lists</string>
+</resources>
