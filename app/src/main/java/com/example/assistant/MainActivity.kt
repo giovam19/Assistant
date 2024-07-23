@@ -1,16 +1,23 @@
 package com.example.assistant
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.DataFactory.TestData
 import com.example.assistant.ListHelpers.ListAdapter
 import com.example.assistant.ListHelpers.ListItemDecorator
+import com.example.assistant.Model.Task
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var profileB: ImageView
@@ -20,6 +27,12 @@ class MainActivity : AppCompatActivity() {
     lateinit var listsB: ConstraintLayout
     lateinit var favsB: ConstraintLayout
     lateinit var addB: ImageView
+
+    lateinit var newTask : ConstraintLayout
+    lateinit var newBirthday : ConstraintLayout
+    lateinit var newNote : ConstraintLayout
+    lateinit var newList : ConstraintLayout
+    lateinit var cancelNew : ImageView
 
     lateinit var taksNum: TextView
     lateinit var brithsNum: TextView
@@ -80,7 +93,9 @@ class MainActivity : AppCompatActivity() {
             favsNum.text = (++favsNumI).toString()
         }
         addB.setOnClickListener {
-            Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
+            addB.visibility = ImageView.INVISIBLE
+            showPopupNewMenu(findViewById(R.id.activity_main))
         }
     }
 
@@ -116,8 +131,52 @@ class MainActivity : AppCompatActivity() {
         } else {
             todayList.visibility = RecyclerView.VISIBLE
             nothing.visibility = TextView.GONE
-            adapter = ListAdapter(lista)
+
+            val l = mutableListOf<Task>()
+            adapter = ListAdapter(l)
             todayList.adapter = adapter
+        }
+    }
+
+    fun showPopupNewMenu(parentView: View) {
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        var popupView = inflater.inflate(R.layout.new_objects_popup, null)
+
+        val width = LinearLayout.LayoutParams.MATCH_PARENT
+        val height = LinearLayout.LayoutParams.MATCH_PARENT
+        val focusable = true
+        val popupWindow = PopupWindow(popupView, width, height, focusable)
+
+        popupWindow.showAtLocation(parentView, Gravity.CENTER, 0, 0)
+
+        initPopupButtons(popupView)
+        setPopupButtonsListeners(popupWindow)
+    }
+
+    fun initPopupButtons(view: View) {
+        newTask = view.findViewById(R.id.newTask_Button)
+        newBirthday = view.findViewById(R.id.newBirth_Button)
+        newNote = view.findViewById(R.id.newNote_Button)
+        newList = view.findViewById(R.id.newList_Button)
+        cancelNew = view.findViewById(R.id.cancelNew_Button)
+    }
+
+    fun setPopupButtonsListeners(popupWindow: PopupWindow) {
+        newTask.setOnClickListener {
+            Toast.makeText(this, "New Task", Toast.LENGTH_SHORT).show()
+        }
+        newBirthday.setOnClickListener {
+            Toast.makeText(this, "New Birthday", Toast.LENGTH_SHORT).show()
+        }
+        newNote.setOnClickListener {
+            Toast.makeText(this, "New Note", Toast.LENGTH_SHORT).show()
+        }
+        newList.setOnClickListener {
+            Toast.makeText(this, "New List", Toast.LENGTH_SHORT).show()
+        }
+        cancelNew.setOnClickListener {
+            popupWindow.dismiss()
+            addB.visibility = ImageView.VISIBLE
         }
     }
 }

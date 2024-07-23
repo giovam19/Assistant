@@ -6,4 +6,8 @@
     <string name="birthdays">Birthdays</string>
     <string name="notes">Notes</string>
     <string name="lists">Lists</string>
+    <string name="task">Task</string>
+    <string name="birthday">Birthday</string>
+    <string name="note">Note</string>
+    <string name="list">List</string>
 </resources>
