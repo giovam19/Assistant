@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewBirthdayActivity">
+
+    <ImageView
+        android:id="@+id/newBackButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/left_arrow" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/kameron"
+        android:text="@string/new_birthday"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/newBackButton"
+        app:layout_constraintTop_toBottomOf="@+id/newBackButton" />
+
+    <EditText
+        android:id="@+id/newBirthName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="48dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:hint="@string/name"
+        android:textColorHint="@color/black_60"
+        android:fontFamily="@font/kameron"
+        android:background="@drawable/round_rectangle_15"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newBirthDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newBirthName">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/calendar" />
+
+        <TextView
+            android:id="@+id/newDateTW"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/bottom_line_rectangle"
+            android:fontFamily="@font/kameron"
+            android:hint="@string/date"
+            android:paddingStart="10dp"
+            android:paddingBottom="3dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black_60"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/newCancelButton"
+        android:layout_width="94dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/blue_button"
+        android:fontFamily="@font/kameron"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/newAddButton"
+        android:layout_width="94dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/blue_button"
+        android:fontFamily="@font/kameron"
+        android:gravity="center"
+        android:text="@string/add"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

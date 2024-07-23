@@ -13,6 +13,19 @@
         android:theme="@style/Theme.Assistant"
         tools:targetApi="31">
         <activity
+            android:name=".NewListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewNoteActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".NewBirthdayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

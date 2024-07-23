@@ -153,8 +153,8 @@
 
     <ImageView
         android:id="@+id/cancelNew_Button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toBottomOf="parent"

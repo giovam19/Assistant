@@ -10,4 +10,15 @@
     <string name="birthday">Birthday</string>
     <string name="note">Note</string>
     <string name="list">List</string>
+    <string name="new_task">New Task</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="date">Date</string>
+    <string name="hour">Hour</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+    <string name="new_birthday">New Birthday</string>
+    <string name="name">Name</string>
+    <string name="new_note">New Note</string>
+    <string name="new_list">New List</string>
 </resources>

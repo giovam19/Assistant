@@ -1,5 +1,6 @@
 package com.example.assistant
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -16,40 +17,39 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.DataFactory.TestData
 import com.example.assistant.ListHelpers.ListAdapter
 import com.example.assistant.ListHelpers.ListItemDecorator
-import com.example.assistant.Model.Task
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var profileB: ImageView
-    lateinit var tasksB: ConstraintLayout
-    lateinit var brithsB: ConstraintLayout
-    lateinit var notesB: ConstraintLayout
-    lateinit var listsB: ConstraintLayout
-    lateinit var favsB: ConstraintLayout
-    lateinit var addB: ImageView
+    private lateinit var profileB: ImageView
+    private lateinit var tasksB: ConstraintLayout
+    private lateinit var birthsB: ConstraintLayout
+    private lateinit var notesB: ConstraintLayout
+    private lateinit var listsB: ConstraintLayout
+    private lateinit var favsB: ConstraintLayout
+    private lateinit var addB: ImageView
 
-    lateinit var newTask : ConstraintLayout
-    lateinit var newBirthday : ConstraintLayout
-    lateinit var newNote : ConstraintLayout
-    lateinit var newList : ConstraintLayout
-    lateinit var cancelNew : ImageView
+    private lateinit var newTask : ConstraintLayout
+    private lateinit var newBirthday : ConstraintLayout
+    private lateinit var newNote : ConstraintLayout
+    private lateinit var newList : ConstraintLayout
+    private lateinit var cancelNew : ImageView
 
-    lateinit var taksNum: TextView
-    lateinit var brithsNum: TextView
-    lateinit var notesNum: TextView
-    lateinit var listsNum: TextView
-    lateinit var favsNum: TextView
+    private lateinit var tasksNum: TextView
+    private lateinit var birthsNum: TextView
+    private lateinit var notesNum: TextView
+    private lateinit var listsNum: TextView
+    private lateinit var favsNum: TextView
 
-    lateinit var todayList: RecyclerView
-    lateinit var itemDecoration : ListItemDecorator
-    lateinit var adapter : ListAdapter
-    lateinit var nothing: TextView
+    private lateinit var todayList: RecyclerView
+    private lateinit var itemDecoration : ListItemDecorator
+    private lateinit var adapter : ListAdapter
+    private lateinit var nothing: TextView
 
-    var tasksNumI = 15
-    var brithsNumI = 30
-    var notesNumI = 10
-    var listsNumI = 3
-    var favsNumI = 8
+    private var tasksNumI = 15
+    private var birthsNumI = 30
+    private var notesNumI = 10
+    private var listsNumI = 3
+    private var favsNumI = 8
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,25 +63,30 @@ class MainActivity : AppCompatActivity() {
         setList()
     }
 
-    fun initButtons() {
+    override fun onStart() {
+        super.onStart()
+        addB.visibility = ImageView.VISIBLE
+    }
+
+    private fun initButtons() {
         profileB = findViewById(R.id.profileButton)
         tasksB = findViewById(R.id.tasksContainer)
-        brithsB = findViewById(R.id.birthsContainer)
+        birthsB = findViewById(R.id.birthsContainer)
         notesB = findViewById(R.id.notesContainer)
         listsB = findViewById(R.id.listsContainer)
         favsB = findViewById(R.id.favsContainer)
         addB = findViewById(R.id.addButton)
     }
 
-    fun setButtonsListeners() {
+    private fun setButtonsListeners() {
         profileB.setOnClickListener {
             Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
         }
         tasksB.setOnClickListener {
-            taksNum.text = (++tasksNumI).toString()
+            tasksNum.text = (++tasksNumI).toString()
         }
-        brithsB.setOnClickListener {
-            brithsNum.text = (++brithsNumI).toString()
+        birthsB.setOnClickListener {
+            birthsNum.text = (++birthsNumI).toString()
         }
         notesB.setOnClickListener {
             notesNum.text = (++notesNumI).toString()
@@ -99,15 +104,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun initNums() {
-        taksNum  = findViewById(R.id.tasksNum)
-        brithsNum = findViewById(R.id.birthsNum)
+    private fun initNums() {
+        tasksNum  = findViewById(R.id.tasksNum)
+        birthsNum = findViewById(R.id.birthsNum)
         notesNum = findViewById(R.id.notesNum)
         listsNum = findViewById(R.id.listsNum)
         favsNum = findViewById(R.id.favsNum)
 
-        taksNum.text = tasksNumI.toString()
-        brithsNum.text = brithsNumI.toString()
+        tasksNum.text = tasksNumI.toString()
+        birthsNum.text = birthsNumI.toString()
         notesNum.text = notesNumI.toString()
         listsNum.text = listsNumI .toString()
         favsNum.text = favsNumI.toString()
@@ -122,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         todayList.addItemDecoration(itemDecoration)
     }
 
-    fun setList() {
+    private fun setList() {
         val lista = TestData().todayItems()
 
         if (lista.isEmpty()) {
@@ -131,16 +136,14 @@ class MainActivity : AppCompatActivity() {
         } else {
             todayList.visibility = RecyclerView.VISIBLE
             nothing.visibility = TextView.GONE
-
-            val l = mutableListOf<Task>()
-            adapter = ListAdapter(l)
+            adapter = ListAdapter(lista)
             todayList.adapter = adapter
         }
     }
 
-    fun showPopupNewMenu(parentView: View) {
+    private fun showPopupNewMenu(parentView: View) {
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var popupView = inflater.inflate(R.layout.new_objects_popup, null)
+        val popupView = inflater.inflate(R.layout.new_objects_popup, null)
 
         val width = LinearLayout.LayoutParams.MATCH_PARENT
         val height = LinearLayout.LayoutParams.MATCH_PARENT
@@ -153,7 +156,7 @@ class MainActivity : AppCompatActivity() {
         setPopupButtonsListeners(popupWindow)
     }
 
-    fun initPopupButtons(view: View) {
+    private fun initPopupButtons(view: View) {
         newTask = view.findViewById(R.id.newTask_Button)
         newBirthday = view.findViewById(R.id.newBirth_Button)
         newNote = view.findViewById(R.id.newNote_Button)
@@ -161,18 +164,26 @@ class MainActivity : AppCompatActivity() {
         cancelNew = view.findViewById(R.id.cancelNew_Button)
     }
 
-    fun setPopupButtonsListeners(popupWindow: PopupWindow) {
+    private fun setPopupButtonsListeners(popupWindow: PopupWindow) {
         newTask.setOnClickListener {
-            Toast.makeText(this, "New Task", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, NewTaskActivity::class.java)
+            startActivity(intent)
+            popupWindow.dismiss()
         }
         newBirthday.setOnClickListener {
-            Toast.makeText(this, "New Birthday", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, NewBirthdayActivity::class.java)
+            startActivity(intent)
+            popupWindow.dismiss()
         }
         newNote.setOnClickListener {
-            Toast.makeText(this, "New Note", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, NewNoteActivity::class.java)
+            startActivity(intent)
+            popupWindow.dismiss()
         }
         newList.setOnClickListener {
-            Toast.makeText(this, "New List", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, NewListActivity::class.java)
+            startActivity(intent)
+            popupWindow.dismiss()
         }
         cancelNew.setOnClickListener {
             popupWindow.dismiss()
