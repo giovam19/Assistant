@@ -21,4 +21,6 @@
     <string name="name">Name</string>
     <string name="new_note">New Note</string>
     <string name="new_list">New List</string>
+    <string name="element">Element</string>
+    <string name="new_item">+ New item</string>
 </resources>
