@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.example.assistant.R
 
-class ItemListController(private val context: Context, view: View, container: LinearLayout) {
+class ItemListController(private val context: Context, view: View, container: LinearLayout, list: MutableList<ItemListController>) {
     private val checkbox: ImageView = view.findViewById(R.id.listItemCheckbox)
     private val text: EditText = view.findViewById(R.id.listItemText)
     private val delete: ImageView = view.findViewById(R.id.listItemDelete)
@@ -43,6 +43,7 @@ class ItemListController(private val context: Context, view: View, container: Li
         }
         delete.setOnClickListener {
             container.removeView(view)
+            list.remove(this)
         }
     }
 

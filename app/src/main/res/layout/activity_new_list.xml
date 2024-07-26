@@ -54,7 +54,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/listErrorMsg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newListTitle">
@@ -63,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:id="@+id/newListContainer"
                 android:layout_width="match_parent"
@@ -70,17 +71,32 @@
                 android:orientation="vertical">
 
             </LinearLayout>
+
             <TextView
                 android:id="@+id/newListAddItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/kameron"
                 android:text="@string/new_item"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"/>
+                android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/listErrorMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:fontFamily="@font/kameron"
+        android:text="Error"
+        android:textColor="@color/red"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
