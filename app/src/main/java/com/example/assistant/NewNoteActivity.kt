@@ -8,8 +8,7 @@ import android.widget.Toast
 
 class NewNoteActivity : AppCompatActivity() {
     private lateinit var backButton: ImageView
-    private lateinit var cancelButton: TextView
-    private lateinit var addButton: TextView
+    private lateinit var saveButton: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,18 +21,14 @@ class NewNoteActivity : AppCompatActivity() {
 
     private fun initButtons() {
         backButton = findViewById(R.id.newBackButton)
-        cancelButton = findViewById(R.id.newCancelButton)
-        addButton = findViewById(R.id.newAddButton)
+        saveButton = findViewById(R.id.newSaveButton)
     }
 
     private fun setButtonsListeners() {
         backButton.setOnClickListener {
             finish()
         }
-        cancelButton.setOnClickListener {
-            finish()
-        }
-        addButton.setOnClickListener {
+        saveButton.setOnClickListener {
             //guardar datos
             finish()
         }
