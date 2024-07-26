@@ -8,43 +8,55 @@
 
     <ImageView
         android:id="@+id/newBackButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/left_arrow" />
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/newSaveButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/green_check" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="58dp"
         android:fontFamily="@font/kameron"
         android:text="@string/new_task"
         android:textColor="@color/black"
         android:textSize="36sp"
+        app:layout_constraintEnd_toStartOf="@+id/newSaveButton"
         app:layout_constraintStart_toEndOf="@+id/newBackButton"
-        app:layout_constraintTop_toBottomOf="@+id/newBackButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/newTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="48dp"
-        android:ems="10"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:hint="@string/title"
-        android:textColorHint="@color/black_60"
-        android:fontFamily="@font/kameron"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/round_rectangle_15"
+        android:ems="10"
+        android:fontFamily="@font/kameron"
+        android:hint="@string/title"
+        android:inputType="text|textCapSentences"
         android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black_60"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -52,16 +64,16 @@
     <EditText
         android:id="@+id/newTaskDescription"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginStart="48dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/round_rectangle_15"
         android:ems="10"
         android:fontFamily="@font/kameron"
         android:gravity="start|top"
         android:hint="@string/description"
-        android:inputType="textMultiLine"
+        android:inputType="textMultiLine|textCapSentences"
         android:paddingLeft="12dp"
         android:paddingTop="12dp"
         android:textColor="@color/black"
@@ -86,7 +98,7 @@
             android:layout_height="25dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/calendar" />
+            app:srcCompat="@drawable/calendar_task" />
 
         <TextView
             android:id="@+id/newDateTW"
@@ -121,7 +133,7 @@
             android:layout_height="25dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/clock" />
+            app:srcCompat="@drawable/clock_color" />
 
         <TextView
             android:id="@+id/newHourTW"
@@ -142,35 +154,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/newCancelButton"
-        android:layout_width="94dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginBottom="84dp"
-        android:background="@drawable/blue_button"
+        android:id="@+id/taskErrorMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
         android:fontFamily="@font/kameron"
-        android:gravity="center"
-        android:text="@string/cancel"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:text="Error"
+        android:textColor="@color/red"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/newAddButton"
-        android:layout_width="94dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="84dp"
-        android:background="@drawable/blue_button"
-        android:fontFamily="@font/kameron"
-        android:gravity="center"
-        android:text="@string/add"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
