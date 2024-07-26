@@ -54,7 +54,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/noteErrorMsg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newNoteTitle">
@@ -80,5 +80,19 @@
                 android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/noteErrorMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:fontFamily="@font/kameron"
+        android:text="Error"
+        android:textColor="@color/red"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
