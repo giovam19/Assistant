@@ -8,9 +8,4 @@ class List (
     var title: String,
     var elements: List<ListItem>,
     var isFavorite: Boolean
-) {
-    class ListItem (
-        var checked: Boolean,
-        var element: String
-    ){}
-}
+) {}
