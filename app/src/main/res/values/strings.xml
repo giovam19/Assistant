@@ -23,4 +23,9 @@
     <string name="new_list">New List</string>
     <string name="element">Element</string>
     <string name="new_item">+ New item</string>
+    <string name="task_nothing">No task planned</string>
+    <string name="no_description">No Description.</string>
+    <string name="favorite">Favorite</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>
