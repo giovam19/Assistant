@@ -13,6 +13,7 @@ import com.example.assistant.DataFactory.TestData
 import com.example.assistant.Model.Task
 import java.util.Calendar
 import java.util.Date
+import java.util.UUID
 
 class NewTaskActivity : AppCompatActivity() {
     private lateinit var backButton: ImageView
@@ -55,6 +56,7 @@ class NewTaskActivity : AppCompatActivity() {
             val task = prepareData()
             if (task != null) {
                 //guardar en bbdd
+                TestData.tasks.add(task)
 
                 println(task.title)
                 println(task.date)
@@ -101,7 +103,7 @@ class NewTaskActivity : AppCompatActivity() {
     }
 
     private fun prepareData(): Task? {
-        val task = Task("", title.text.toString(), description.text.toString(), dateText.text.toString(), hourText.text.toString(), false)
+        val task = Task(UUID.randomUUID().toString(), title.text.toString(), description.text.toString(), dateText.text.toString(), hourText.text.toString(), false)
         val msg = task.IsValidData()
 
         if (msg.isNotEmpty()) {

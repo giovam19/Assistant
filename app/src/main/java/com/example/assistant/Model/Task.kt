@@ -23,4 +23,10 @@ class Task(
 
         return ""
     }
+
+    fun getShortDate(): String {
+        val pieces = date.split('/')
+
+        return "${pieces[0]}/${pieces[1]}"
+    }
 }

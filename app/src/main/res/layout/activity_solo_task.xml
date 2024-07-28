@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/activity_solo_task"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewTaskActivity">
+    tools:context=".SoloTaskActivity">
 
     <ImageView
-        android:id="@+id/newBackButton"
+        android:id="@+id/taskBackButton"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="30dp"
@@ -17,80 +19,77 @@
         app:srcCompat="@drawable/back" />
 
     <ImageView
-        android:id="@+id/newSaveButton"
+        android:id="@+id/taskOptionsButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/options" />
+
+    <ImageView
+        android:id="@+id/editSaveButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/green_check" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="58dp"
-        android:fontFamily="@font/kameron"
-        android:text="@string/new_task"
-        android:textColor="@color/black"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toStartOf="@+id/newSaveButton"
-        app:layout_constraintStart_toEndOf="@+id/newBackButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/green_check"/>
 
     <EditText
-        android:id="@+id/newTaskTitle"
-        android:layout_width="match_parent"
+        android:id="@+id/taskTitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="36dp"
-        android:background="@drawable/round_rectangle_15"
-        android:ems="10"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/transparent"
         android:fontFamily="@font/kameron"
         android:hint="@string/title"
         android:inputType="text|textCapSentences"
+        android:minEms="3"
         android:padding="12dp"
+        android:text="@string/task"
         android:textColor="@color/black"
         android:textColorHint="@color/black_60"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/newTaskDescription"
-        android:layout_width="match_parent"
+        android:id="@+id/taskDescription"
+        android:layout_width="0dp"
         android:layout_height="200dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="36dp"
-        android:background="@drawable/round_rectangle_15"
-        android:ems="10"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/transparent"
         android:fontFamily="@font/kameron"
         android:gravity="start|top"
-        android:hint="@string/description"
+        android:hint="@string/no_description"
         android:inputType="textMultiLine|textCapSentences"
         android:paddingLeft="12dp"
         android:paddingTop="12dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black_60"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newTaskTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/taskTitle" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/newTaskDate"
+        android:id="@+id/taskDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newTaskDescription">
+        app:layout_constraintTop_toBottomOf="@+id/taskDescription">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -101,12 +100,11 @@
             app:srcCompat="@drawable/calendar_task" />
 
         <TextView
-            android:id="@+id/newDateTW"
+            android:id="@+id/dateTW"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/bottom_line_rectangle"
             android:fontFamily="@font/kameron"
             android:hint="@string/date"
             android:paddingStart="10dp"
@@ -120,13 +118,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/newTaskHour"
+        android:id="@+id/taskHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newTaskDate">
+        app:layout_constraintTop_toBottomOf="@+id/taskDate">
 
         <ImageView
             android:id="@+id/imageView3"
@@ -137,12 +135,11 @@
             app:srcCompat="@drawable/clock_color" />
 
         <TextView
-            android:id="@+id/newHourTW"
+            android:id="@+id/hourTW"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/bottom_line_rectangle"
             android:fontFamily="@font/kameron"
             android:hint="@string/hour"
             android:paddingStart="10dp"
@@ -154,19 +151,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/taskErrorMsg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:fontFamily="@font/kameron"
-        android:text="Error"
-        android:textColor="@color/red"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

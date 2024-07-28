@@ -15,7 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.DataFactory.TestData
-import com.example.assistant.ListHelpers.ListAdapter
+import com.example.assistant.ListHelpers.TodayListAdapter
 import com.example.assistant.ListHelpers.ListItemDecorator
 
 
@@ -42,33 +42,35 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var todayList: RecyclerView
     private lateinit var itemDecoration : ListItemDecorator
-    private lateinit var adapter : ListAdapter
+    private lateinit var adapter : TodayListAdapter
     private lateinit var nothing: TextView
 
-    private var tasksNumI = 15
-    private var birthsNumI = 30
-    private var notesNumI = 10
-    private var listsNumI = 3
-    private var favsNumI = 8
+    private var tasksNumI: Int = 0
+    private var birthsNumI: Int = 0
+    private var notesNumI: Int = 0
+    private var listsNumI: Int = 0
+    private var favsNumI: Int = 8
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
-        initButtons()
+        initComponents()
         initNums()
         setButtonsListeners()
         configList()
-        setList()
     }
 
     override fun onStart() {
         super.onStart()
+
+        setList()
+        calcualteNumObjects()
         addB.visibility = ImageView.VISIBLE
     }
 
-    private fun initButtons() {
+    private fun initComponents() {
         profileB = findViewById(R.id.profileButton)
         tasksB = findViewById(R.id.tasksContainer)
         birthsB = findViewById(R.id.birthsContainer)
@@ -76,6 +78,21 @@ class MainActivity : AppCompatActivity() {
         listsB = findViewById(R.id.listsContainer)
         favsB = findViewById(R.id.favsContainer)
         addB = findViewById(R.id.addButton)
+
+        TestData().fillTasks() //debug
+    }
+
+    private fun calcualteNumObjects() {
+        tasksNumI = TestData.tasks.size
+        birthsNumI = TestData.births.size
+        notesNumI = TestData.notes.size
+        listsNumI = TestData.lists.size
+
+        tasksNum.text = tasksNumI.toString()
+        birthsNum.text = birthsNumI.toString()
+        notesNum.text = notesNumI.toString()
+        listsNum.text = listsNumI .toString()
+        favsNum.text = favsNumI.toString()
     }
 
     private fun setButtonsListeners() {
@@ -83,22 +100,22 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
         }
         tasksB.setOnClickListener {
-            tasksNum.text = (++tasksNumI).toString()
+            val intent = Intent(this, ListTasksActivity::class.java)
+            startActivity(intent)
         }
         birthsB.setOnClickListener {
-            birthsNum.text = (++birthsNumI).toString()
+            //birthsNum.text = (++birthsNumI).toString()
         }
         notesB.setOnClickListener {
-            notesNum.text = (++notesNumI).toString()
+            //notesNum.text = (++notesNumI).toString()
         }
         listsB.setOnClickListener {
-            listsNum.text = (++listsNumI).toString()
+            //listsNum.text = (++listsNumI).toString()
         }
         favsB.setOnClickListener {
             favsNum.text = (++favsNumI).toString()
         }
         addB.setOnClickListener {
-            //Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
             addB.visibility = ImageView.INVISIBLE
             showPopupNewMenu(findViewById(R.id.activity_main))
         }
@@ -110,18 +127,12 @@ class MainActivity : AppCompatActivity() {
         notesNum = findViewById(R.id.notesNum)
         listsNum = findViewById(R.id.listsNum)
         favsNum = findViewById(R.id.favsNum)
-
-        tasksNum.text = tasksNumI.toString()
-        birthsNum.text = birthsNumI.toString()
-        notesNum.text = notesNumI.toString()
-        listsNum.text = listsNumI .toString()
-        favsNum.text = favsNumI.toString()
     }
 
     private fun configList() {
         todayList = findViewById(R.id.todayList)
         nothing = findViewById(R.id.nothing_today)
-        itemDecoration = ListItemDecorator()
+        itemDecoration = ListItemDecorator(32)
 
         todayList.layoutManager = LinearLayoutManager(this)
         todayList.addItemDecoration(itemDecoration)
@@ -136,14 +147,14 @@ class MainActivity : AppCompatActivity() {
         } else {
             todayList.visibility = RecyclerView.VISIBLE
             nothing.visibility = TextView.GONE
-            adapter = ListAdapter(lista)
+            adapter = TodayListAdapter(lista, this)
             todayList.adapter = adapter
         }
     }
 
     private fun showPopupNewMenu(parentView: View) {
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val popupView = inflater.inflate(R.layout.new_objects_popup, null)
+        val popupView = inflater.inflate(R.layout.popup_new_objects, null)
 
         val width = LinearLayout.LayoutParams.MATCH_PARENT
         val height = LinearLayout.LayoutParams.MATCH_PARENT
