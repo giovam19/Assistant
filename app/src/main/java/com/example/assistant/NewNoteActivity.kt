@@ -6,8 +6,10 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.example.assistant.DataFactory.TestData
 import com.example.assistant.Model.Note
 import java.util.Date
+import java.util.UUID
 
 class NewNoteActivity : AppCompatActivity() {
     private lateinit var backButton: ImageView
@@ -43,6 +45,7 @@ class NewNoteActivity : AppCompatActivity() {
             val note = prepareData()
             if (note != null) {
                 //guardar en bbdd
+                TestData.notes.add(note)
 
                 println(note.title)
                 println(note.note)
@@ -53,7 +56,7 @@ class NewNoteActivity : AppCompatActivity() {
     }
 
     private fun prepareData(): Note? {
-        val note = Note("", title.text.toString(), note.text.toString(), Date(), false)
+        val note = Note(UUID.randomUUID().toString(), title.text.toString(), note.text.toString(), Date(), false)
         val msg = note.IsValidData()
 
         if (msg.isNotEmpty()) {

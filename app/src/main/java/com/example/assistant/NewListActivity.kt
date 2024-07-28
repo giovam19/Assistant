@@ -10,9 +10,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.example.assistant.Controller.ItemListController
+import com.example.assistant.DataFactory.TestData
 import com.example.assistant.Model.ListItem
 import com.example.assistant.Model.List as OList
 import java.util.Date
+import java.util.UUID
 
 class NewListActivity : AppCompatActivity() {
     private lateinit var backButton: ImageView
@@ -54,6 +56,7 @@ class NewListActivity : AppCompatActivity() {
             val list = prepareData()
             if (list != null) {
                 //guardar en bbdd
+                TestData.lists.add(list)
 
                 println(list.title)
                 println(list.elements.size)
@@ -66,7 +69,7 @@ class NewListActivity : AppCompatActivity() {
         }
         addItemButton.setOnClickListener {
             val inflater = LayoutInflater.from(this)
-            val newItem: View = inflater.inflate(R.layout.check_list_item, listContainer, false)
+            val newItem: View = inflater.inflate(R.layout.item_check_list, listContainer, false)
 
             val itemController = ItemListController(this, newItem, listContainer, listItemControllers)
             listItemControllers.add(itemController)
@@ -80,7 +83,7 @@ class NewListActivity : AppCompatActivity() {
             val it = ListItem(item.getChecked(), item.getText())
             listItem.add(it)
         }
-        val list = OList("", title.text.toString(), listItem, Date(), false)
+        val list = OList(UUID.randomUUID().toString(), title.text.toString(), listItem, Date(), false)
         val msg = list.IsValidData()
 
         if (msg.isNotEmpty()) {

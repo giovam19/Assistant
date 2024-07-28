@@ -8,10 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.assistant.DataFactory.TestData
 import com.example.assistant.Model.Birthday
 import com.example.assistant.Model.Task
 import java.time.Month
 import java.util.Calendar
+import java.util.UUID
 
 class NewBirthdayActivity : AppCompatActivity() {
     private lateinit var backButton: ImageView
@@ -60,6 +62,7 @@ class NewBirthdayActivity : AppCompatActivity() {
             val birth = prepareData()
             if (birth != null) {
                 //guardar en bbdd
+                TestData.births.add(birth)
 
                 println(birth.name)
                 println(birth.date)
@@ -119,7 +122,7 @@ class NewBirthdayActivity : AppCompatActivity() {
     }
 
     private fun prepareData(): Birthday? {
-        val birth = Birthday("", nameText.text.toString(), dateText.text.toString(), false)
+        val birth = Birthday(UUID.randomUUID().toString(), nameText.text.toString(), dateText.text.toString(), false)
         val msg = birth.IsValidData()
 
         if (msg.isNotEmpty()) {
