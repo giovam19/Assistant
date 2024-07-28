@@ -13,11 +13,17 @@
         android:theme="@style/Theme.Assistant"
         tools:targetApi="31">
         <activity
+            android:name=".SoloTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListTasksActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewListActivity"
             android:exported="false" />
         <activity
             android:name=".NewNoteActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".NewBirthdayActivity"
             android:exported="false" />
