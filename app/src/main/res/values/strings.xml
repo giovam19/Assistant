@@ -28,4 +28,5 @@
     <string name="favorite">Favorite</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="no_birthday_saved">No birthday saved</string>
 </resources>

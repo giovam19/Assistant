@@ -23,9 +23,6 @@ class NewBirthdayActivity : AppCompatActivity() {
     private lateinit var dateButton: ConstraintLayout
     private lateinit var dateText: TextView
     private lateinit var errorMsg: TextView
-    private var day: Int = 0
-    private var month: Int = 0
-    private var year: Int = 0
 
     private lateinit var calendarView: ConstraintLayout
     private lateinit var textMonth: TextView
@@ -82,41 +79,33 @@ class NewBirthdayActivity : AppCompatActivity() {
                 val fechaSeleccionada = "$dia/$mes/$selectedYear"
                 dateText.text = fechaSeleccionada
 
-                setCalendarView(selectedDay, selectedMonth+1, selectedYear)
+                setCalendarView(dia, mes)
             }, year, month, day)
 
             datePickerDialog.show()
         }
     }
 
-    private fun setCalendarView(day: Int, month: Int, year: Int) {
-        this.day = day
-        this.month = month
-        this.year = year
-
-        if (day < 10)
-            textDay.text = "0$day"
-        else
-            textDay.text = day.toString()
-
-        textMonth.text = NumMonthToText(month)
+    private fun setCalendarView(day: String, month: String) {
+        textDay.text = day
+        textMonth.text = getTextMonth(month)
         calendarView.visibility = ConstraintLayout.VISIBLE
     }
 
-    private fun NumMonthToText(month: Int): String {
+    private fun getTextMonth(month: String): String {
         return when (month) {
-            1 -> "January"
-            2 -> "February"
-            3 -> "March"
-            4 -> "April"
-            5 -> "May"
-            6 -> "June"
-            7 -> "July"
-            8 -> "August"
-            9 -> "September"
-            10 -> "October"
-            11 -> "November"
-            12 -> "December"
+            "01" -> "January"
+            "02" -> "February"
+            "03" -> "March"
+            "04" -> "April"
+            "05" -> "May"
+            "06" -> "June"
+            "07" -> "July"
+            "08" -> "August"
+            "09" -> "September"
+            "10" -> "October"
+            "11" -> "November"
+            "12" -> "December"
             else -> ""
         }
     }

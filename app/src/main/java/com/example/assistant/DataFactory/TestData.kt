@@ -19,12 +19,8 @@ class TestData {
     fun todayItems(): List<Reminder> {
         val list = mutableListOf<Reminder>()
 
-        val b = Birthday(UUID.randomUUID().toString(), "Alejandro", "27/06/2024", false)
-        val c = Birthday(UUID.randomUUID().toString(), "Ricardo", "27/06/2024", false)
-
-        list.add(b)
-        list.add(c)
         list.addAll(tasks)
+        list.addAll(births)
 
         return list
     }
@@ -42,5 +38,16 @@ class TestData {
         tasks.add(d)
         tasks.add(e)
         tasks.add(f)
+    }
+
+    fun fillBirthdays() {
+        if (births.isNotEmpty())
+            return
+
+        val b = Birthday(UUID.randomUUID().toString(), "Alejandro", "27/06/2024", false)
+        val c = Birthday(UUID.randomUUID().toString(), "Ricardo", "05/08/2024", false)
+
+        births.add(b)
+        births.add(c)
     }
 }

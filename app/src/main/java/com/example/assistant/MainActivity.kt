@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
         addB = findViewById(R.id.addButton)
 
         TestData().fillTasks() //debug
+        TestData().fillBirthdays() //debug
     }
 
     private fun calcualteNumObjects() {
@@ -104,7 +105,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         birthsB.setOnClickListener {
-            //birthsNum.text = (++birthsNumI).toString()
+            val intent = Intent(this, ListBirthdaysActivity::class.java)
+            startActivity(intent)
         }
         notesB.setOnClickListener {
             //notesNum.text = (++notesNumI).toString()

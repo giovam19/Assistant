@@ -18,4 +18,22 @@ class Birthday (
 
         return ""
     }
+
+    fun getShortDate(): String {
+        val pieces = date.split('/')
+
+        return "${pieces[0]}/${pieces[1]}"
+    }
+
+    fun getDay(): String {
+        val pieces = date.split('/')
+
+        return pieces[0]
+    }
+
+    fun getMonth(): String {
+        val pieces = date.split('/')
+
+        return pieces[1]
+    }
 }
